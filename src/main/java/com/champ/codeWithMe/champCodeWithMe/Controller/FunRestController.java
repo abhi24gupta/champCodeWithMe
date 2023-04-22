@@ -24,4 +24,14 @@ public class FunRestController {
         log.info("Hi, I am {} and I live in {}",name,city);
         return "Hello World";
     }
+    @GetMapping("/workout")
+    public String getDailyWorkout(){
+        return "Let's begin to complete this course";
+    }
+
+    @GetMapping("/fortune")
+    public String getDailyFortune(){
+        return "Today is you lucky day";
+    }
+
 }
