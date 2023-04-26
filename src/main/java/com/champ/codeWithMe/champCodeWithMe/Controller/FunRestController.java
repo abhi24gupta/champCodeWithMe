@@ -4,6 +4,7 @@ import com.champ.codeWithMe.champCodeWithMe.dao.Coach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +16,12 @@ public class FunRestController {
     private Coach myCoach;
 
     @Autowired
-    public FunRestController(Coach theCoach) {
+    public FunRestController(@Qualifier("skatingCoach") Coach theCoach) {
         myCoach = theCoach;
     }
 
     @Autowired
-    public void setMyCoach(Coach theCoach) {
+    public void setMyCoach(@Qualifier("skatingCoach") Coach theCoach) {
         this.myCoach = theCoach;
     }
 
