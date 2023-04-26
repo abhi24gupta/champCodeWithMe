@@ -1,7 +1,9 @@
 package com.champ.codeWithMe.champCodeWithMe.Controller;
 
+import com.champ.codeWithMe.champCodeWithMe.dao.Coach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,28 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class FunRestController {
 
     private static final Logger log = LoggerFactory.getLogger(FunRestController.class);
+    private Coach myCoach;
 
-
-    @Value("${home.name}")
-    private String name;
-
-    @Value("${home.city}")
-    private String city;
-    // expose "/" that return "Hello World"
-
-    @GetMapping("/get/home")
-    public String sayHello(){
-        log.info("Hi, I am {} and I live in {}",name,city);
-        return "Hello World";
+    @Autowired
+    public FunRestController(Coach theCoach) {
+        myCoach = theCoach;
     }
-    @GetMapping("/workout")
+
+    @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
-        return "Let's begin to complete this course";
+        return myCoach.getDailyWorkout();
     }
-
-    @GetMapping("/fortune")
-    public String getDailyFortune(){
-        return "Today is you lucky day";
-    }
-
 }
