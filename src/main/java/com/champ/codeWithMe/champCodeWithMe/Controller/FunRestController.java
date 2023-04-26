@@ -19,8 +19,13 @@ public class FunRestController {
         myCoach = theCoach;
     }
 
+    @Autowired
+    public void setMyCoach(Coach theCoach) {
+        this.myCoach = theCoach;
+    }
+
     @GetMapping("/dailyworkout")
-    public String getDailyWorkout(){
+    public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
     }
 }
